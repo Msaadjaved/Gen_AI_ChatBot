@@ -12,10 +12,12 @@ export default function Home() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError]       = useState('');
+  const [loading, setLoading]   = useState(false); // ← ADD THIS LINE
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true); // ← ADD THIS
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
@@ -25,12 +27,14 @@ export default function Home() {
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || 'Login failed');
+        setLoading(false); // ← ADD THIS
         return;
       }
       login(data.token, { username: data.username, role: data.role });
       navigate('/chat');
     } catch {
       setError('Could not reach the server. Is it running?');
+      setLoading(false); // ← ADD THIS
     }
   };
 
