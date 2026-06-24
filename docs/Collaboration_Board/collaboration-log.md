@@ -64,6 +64,8 @@ Each team member writes their own section below. This is where you go deeper tha
 **[Start date: 21/06/2025]**
 
 ...
+> Why express?
+We chose Express over other Node frameworks because it is minimal, well-documented, and lets us see exactly what is happening at each step. 
 
 ---
 

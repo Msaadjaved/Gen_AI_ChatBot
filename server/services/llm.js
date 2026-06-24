@@ -1,15 +1,6 @@
 require('dotenv').config();
 const { SYSTEM_PROMPT } = require('../prompts/system');
 
-// ─────────────────────────────────────────────────────────────────
-// BENCHMARKING FILE — switch providers by changing .env only
-//
-//   LLM_PROVIDER=groq        → Groq (llama-3.1-8b-instant)
-//   LLM_PROVIDER=openrouter  → Mistral via OpenRouter (free)
-//
-// No code changes needed — just the env variable + restart server.
-// ─────────────────────────────────────────────────────────────────
-
 async function getAIReply(conversationHistory) {
   const provider = process.env.LLM_PROVIDER || 'groq';
 
