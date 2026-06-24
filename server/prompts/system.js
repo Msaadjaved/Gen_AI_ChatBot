@@ -1,9 +1,4 @@
-// ─────────────────────────────────────────────────────────────────
-// CYBERGUIDE SYSTEM PROMPT
-// This file is owned by Member 1 (Makuo)
-// This is the chatbot's entire personality, coaching logic,
-// and output format. Tune this file during benchmarking.
-// ─────────────────────────────────────────────────────────────────
+
 
 const SYSTEM_PROMPT = `
 You are CyberGuide, a cybersecurity incident response coach
