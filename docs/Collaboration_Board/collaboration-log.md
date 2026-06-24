@@ -1,6 +1,6 @@
 # Collaboration Log
 **Project S3:**  Topic: Cybersecurity Incident Response Chatbot  
-**Team:** Makuo, muhammed Javed, Hassan  
+**Team:** Makuo, Muhammed Javed, Hassan  
 **School:** EPITA Paris  
 **Year:** 2025–2026  
 
@@ -27,7 +27,7 @@ we fill this as we go. Every time you finish something meaningful, add a row. Do
 | Name | Role / Ownership |
 |------|-----------------|
 | Member 1 -- Makuo| Backend (Node.js endpoints) + GenAI integration + benchmarking |
-| Member 2 -- Muhammed Javed | Frontend (React, 3 pages) + Three.js visuals + UX |
+| Member 2 -- Muhammad Saad Javed | Frontend (React, 3 pages) + Three.js visuals + UX |
 | Member 3 -- Hassan | Documentation (Innovation, Privacy, Security) + GenAI log tracking |
 
 
@@ -40,12 +40,14 @@ we fill this as we go. Every time you finish something meaningful, add a row. Do
 |--------|------|-------------|----------------|------|
 | All | Idea selection | Picked the Cybersecurity Incident Response Chatbot as our project idea after comparing 5 options. | Chose this over language learning and student wellness bots because it ties directly into our SSI specialization and the innovation gap (no student-facing guided IR tool exists) gave us a stronger research story. | 21/06/2025 |
 | All | Innovation research | Searched Google Scholar, GitHub, and Product Hunt for existing incident response chatbots. Found 3 academic papers and several enterprise tools (Jeli.io, HackBot, IntellBot). | Decided to position as Niche but argue toward Innovative because nothing exists for students specifically. Used Claude to help summarize search results — logged in GenAI-log.docx. | 21/06/2025 |
-| Member 1 | Got the server running | I tested with groq api key and curl from the terminal and i got a response | We decided to use groq because it is free, and i am testing over terminal because frontend is not yet ready | 23/06/2026|
-| Member 2 | | | | |
-| Member 3 | | | | |
-| Member 1 | | | | |
-| Member 2 | | | | |
-| Member 3 | | | | |
+| Member 1 | Got the server running | I tested with groq api key and curl from the terminal and i got a response | We decided to use groq because it is free, and i am testing over terminal because frontend is not yet ready | 23/06/2026 |
+| Member 2 | Cloned repo and set up frontend | Cloned the repository, created `feat/frontend` branch, installed dependencies with `npm install`, and got the dev server running on `http://localhost:5173`. | Used `feat/frontend` branch to keep frontend work isolated from `main`. Asked Makuo for `.env` values privately instead of committing them to Git. | 23/06/2026 |
+| Member 2 | Styled Home.jsx (landing page) | Replaced the plain login form with a styled dark theme card. Added loading state to the button. Kept `handleLogin` fetch logic unchanged. | Chose dark theme (`#0a0a1a`) with green accent (`#A6E3A1`) to reinforce the cybersecurity theme. Placed the globe at the top as a visual hook. Added demo credentials hint at the bottom. | 23/06/2026 |
+| Member 2 | Styled Chat.jsx (main chat interface) | Styled the chat page with a dark header, scrollable message area, and input bar at the bottom. Added `logout` to the `useAuth` destructuring. | Put the input bar at the bottom because it's industry standard for chat apps. Added a placeholder message when no messages exist. The auto-scroll behavior was already working — I kept it. | 23/06/2026 |
+| Member 2 | Improved ChatBubble.jsx | Added labels ("You" / "CyberGuide") above each bubble. Changed AI bubble to dark theme (`#12121f`) with border to match the app. | Labels improve accessibility and clarity in long conversations. Dark AI bubbles match the overall theme better than the original light grey. | 23/06/2026 |
+| Member 2 | Styled Report.jsx | Added loading and error states. Styled the report content in a code-style card. The download function was already working — I just styled the button. | Used `Courier New, monospace` font for the report to make it look like a technical document. Added "Back to chat" button for easy navigation. | 23/06/2026 |
+| Member 2 | Built ThreatGlobe.jsx with Three.js | Built a 3D globe with wireframe, 25 random red threat dots, atmosphere glow layer, and a pulsing equator ring. Added cleanup function to prevent memory leaks. | Chose Three.js over static images because it's interactive, visually distinctive, and demonstrates actual frontend skill. The globe with red dots reinforces the cybersecurity theme. | 23/06/2026 |
+| Member 2 | Git merge and conflict resolution | Merged `main` into `feat/frontend` and resolved `package-lock.json` conflicts by regenerating the lock file. Opened Pull Request. | Regenerated lock file instead of manually editing it because lock files are auto-generated and manual edits are error-prone. | 23/06/2026 |
 
 ---
 
@@ -67,17 +69,106 @@ We chose Express over other Node frameworks because it is minimal, well-document
 
 ---
 
-### [Member 2 — name] — Frontend + Three.js
+### [Member 2 — Muhammad Saad Javed] — Frontend + Three.js
 
 *Write your section here as you go. Talk about how you structured the 3 React pages, what you built in Three.js and why, what UX decisions you made and why. Include anything you had to scrap or rethink.*
 
-**[Start date:]**
+**[Start date: 23/06/2026]**
 
-...
+**Day 1 — Complete Frontend Implementation (23/06/2026)**
+
+I implemented the entire frontend in one session today. The backend was already running from Makuo's work, so I could test everything end-to-end as I built it.
+
+**What I built:**
+
+| Component | Description |
+|-----------|-------------|
+| **Home.jsx** | Styled the login page with dark theme (`#0a0a1a`), green accent (`#A6E3A1`), and a clean login card. Added loading state to the button for user feedback. |
+| **Chat.jsx** | Built the main chat interface with a header bar (CyberGuide brand, "View report", "Log out"), scrollable message area, and input bar at the bottom. Added `logout` to the `useAuth` destructuring. |
+| **ChatBubble.jsx** | Created reusable message bubbles with labels ("You" / "CyberGuide"), purple for user messages, dark with border for AI messages. |
+| **Report.jsx** | Styled the report page with loading and error states, a code-style card for the report content, and a download button that creates a `.txt` file. |
+| **ThreatGlobe.jsx** | Built a 3D globe using Three.js with wireframe, red threat dots, atmosphere glow, and a pulsing equator ring. |
+
+**UX decisions made:**
+
+1. **Dark theme throughout** — reinforces the cybersecurity/incident response theme and makes the Three.js globe stand out
+2. **Input bar at bottom of chat** — industry standard for chat apps, users expect it there
+3. **Labels above chat bubbles** — helps distinguish who said what in long conversations
+4. **Globe at top of login page** — visual hook that immediately communicates "this is a tech/security tool"
+5. **Loading states on buttons** — prevents double-submission and gives user feedback
+
+**Why these decisions?** I wanted the app to feel polished and professional, not like a basic academic project. The dark theme with green accents gives it a "cyber" feel that matches the incident response purpose.
+
+**What went wrong:**
+
+1. **Missing `loading` state in Home.jsx** — I used `loading` in the button but forgot to declare it in `useState`. Fixed by adding `const [loading, setLoading] = useState(false);` and toggling it during the login request. This broke the page initially until I caught it.
+
+2. **package-lock.json conflicts during merge** — when merging `main` into `feat/frontend`, the lock file had conflicts. I regenerated it by checking out `main`'s version and running `npm install` again. This took a few tries to get right.
+
+3. **ThreatGlobe positioning** — initially the globe was too large and covered the login form. I adjusted the height to `380px` and made it scale properly.
+
+**What worked well:**
+
+- The existing fetch logic (`handleLogin`, `sendMessage`, `downloadReport`) was already wired correctly — I didn't have to touch any API calls
+- Login with `student/epita2025` worked immediately
+- Auto-scroll in chat worked perfectly with `bottomRef.current?.scrollIntoView({ behavior: 'smooth' })`
+- The Three.js globe rendered smoothly with all the enhancements
+
+**What surprised me:** How quickly everything came together once I understood the structure. The scaffold was well-organized so I could focus on styling without fighting the architecture.
+
+**What I would do differently:**
+
+I initially considered using Tailwind CSS for faster styling, but the project was set up with inline styles. I stuck with inline styles to keep it consistent with the existing code and avoid adding extra dependencies that might cause issues for other teammates.
+
+**Why Three.js:**
+
+We chose Three.js over a static image or CSS animation because it is interactive, visually distinctive, and demonstrates actual frontend skill. The globe with red threat dots reinforces the cybersecurity theme and gives the landing page a professional look that sets CyberGuide apart from other chatbots.
+
+**Technical details on the globe:**
+
+```javascript
+// Key decision: globe.add(dot) vs scene.add(dot)
+globe.add(dot); // dot rotates WITH the globe
+scene.add(dot); // dot stays static while globe rotates
+```
+I used `globe.add(dot)` so the threat dots stay fixed on the globe surface as it rotates. This made the visualization more realistic.
+
+The cleanup function in `useEffect` cancels the animation frame and removes the canvas from the DOM — this prevents memory leaks when the component unmounts. I learned this from the Three.js documentation.
+
+**Git workflow:**
+
+I worked on the `feat/frontend` branch throughout. After completing each component, I committed and pushed:
+
+- `chore: initial frontend setup running on port 5173`
+- `feat: Home page styled with dark theme and login form`
+- `feat: Chat page styled — dark theme with scrollable message area`
+- `feat: ChatBubble improved with labels and dark theme colors`
+- `feat: Report page styled — dark theme with download button`
+- `feat: ThreatGlobe enhanced with dots, glow, and pulsing ring`
+- `chore: update client package-lock.json`
+- `Merge main into feat/frontend: regenerate package-lock.json`
+
+**Conflict resolution:** I had to resolve `package-lock.json` conflicts when merging `main` into my branch. I regenerated the lock file instead of manually editing it.
+
+**Final status:**
+
+All work is pushed to `feat/frontend` branch. The branch is now 2 commits ahead of `main` and ready for review. Pull Request opened.
+
+**Completion checklist:**
+
+- [x] Frontend runs at localhost:5173
+- [x] Home page: dark theme, globe, styled login
+- [x] Login works and redirects to /chat
+- [x] Chat page: header, scrollable messages, input bar
+- [x] ChatBubble: labels, purple user / dark AI
+- [x] Report page: loading/error states, download works
+- [x] ThreatGlobe: wireframe, red dots, glow, pulsing ring
+- [x] All commits pushed to feat/frontend
+- [x] Pull Request opened
 
 ---
 
-### [Member 3 — name] — Documentation + Privacy + Security
+### [Member 3 — Hassan] — Documentation + Privacy + Security
 
 *Write your section here as you go. Talk about how you researched the data privacy angle (GDPR, what data the chatbot stores, Mistral vs US providers), how you identified security threats, and how you organized the GenAI log. Include any moments where the research surprised you or changed your thinking.*
 
@@ -95,4 +186,4 @@ We chose Express over other Node frameworks because it is minimal, well-document
 
 ---
 
-*Last updated: 21/06/2025*
+*Last updated: 23/06/2026*
