@@ -1,7 +1,7 @@
 # CyberGuide — Cybersecurity Incident Response Chatbot
 
 EPITA Paris — Generative AI & Chatbots Project — 2025/2026  
-Team: [your team name]
+
 
 ## What it does
 CyberGuide walks students and beginners through responding to a cybersecurity
@@ -11,7 +11,7 @@ a downloadable incident report.
 ## Tech stack
 - Frontend: React + Three.js (3D threat globe on homepage)
 - Backend: Node.js + Express
-- AI: Groq (primary) + Mistral (benchmarking + GDPR angle)
+- AI: Groq (primary) + OpenRouter/Mistral (benchmarking + GDPR angle)
 - Auth: JWT
 
 ```
